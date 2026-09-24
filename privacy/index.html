@@ -15,41 +15,58 @@
     </nav>
     <article>
       <h1>Privacy Policy</h1>
-      <p class="meta"><strong>Effective August 30, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
+      <p class="meta"><strong>Effective September 23, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
 
+      <p>This Privacy Policy explains how Nido Baby ("Nido" or the "App") handles information.</p>
       <h2>Local-first storage</h2>
-      <p>Nido stores baby profiles, photos, care logs, notes, food history, reminders, and preferences in the app’s private storage on your device. Care logs are held in a SQLCipher-encrypted Room database. Its randomly generated passphrase is encrypted by a key held in Android Keystore.</p>
-      <p>Nido excludes its database, encryption-key material, and preferences from Android cloud backup and device-transfer backup. You can create a JSON backup or CSV export yourself. Exported files are ordinary files outside the encrypted database, so store them somewhere you trust.</p>
-
+      <p>Nido stores baby profiles, photos, care logs, notes, food history, reminders, and preferences in the App’s private storage on your device. Care logs are held in a SQLCipher-encrypted Room database. Its randomly generated passphrase is encrypted by a key held in Android Keystore. When cloud sync is on, Nido keeps Firebase’s sync cache in memory only, so the encrypted database stays the only copy of your care data stored on the device.</p>
+      <p>Nido excludes its database, encryption-key material, and preferences from Android cloud backup and device-transfer backup. You can create a JSON backup or CSV export yourself. Exported files are ordinary files outside the encrypted database, so you should store them somewhere you trust.</p>
       <h2>Optional Google sign-in and Firebase sync</h2>
-      <p>Cloud sync is optional. Nido does not upload care data unless you choose <strong>Sign in with Google</strong> in Settings.</p>
-      <p>If you sign in, Nido processes your Google account identifier and email address for authentication; baby profiles and compressed profile photos; the care logs, timestamps, quantities, and notes you enter; and technical sync identifiers and timestamps needed to reconcile devices.</p>
-      <p>Firebase encrypts transfers in transit. Firestore security rules restrict each account namespace to its authenticated Firebase user. This is account-scoped cloud storage, not end-to-end encryption; Google acts as a service provider for authentication and storage. Signing out stops new cloud sync while local encrypted data remains on the device.</p>
-
+      <p>Cloud sync is optional. Nido does not upload your care data unless you choose <strong>Sign in with Google</strong> in Settings.</p>
+      <p>If you sign in, Nido processes the following through Google Firebase:</p>
+      <ul>
+        <li>Your Google account identifier, email address, and the name and profile-picture link Google provides for your account, for authentication</li>
+        <li>Baby profiles: names, birth dates, diaper or potty tracking mode, display order, and profile photos (a compressed cropped photo and the compressed original you chose)</li>
+        <li>Caregiver-entered care and health logs, including feeding, diaper, sleep, pumping, growth, temperature, medication, activity, timestamps, quantities, and notes</li>
+        <li>Technical sync identifiers and timestamps needed to reconcile devices</li>
+      </ul>
+      <p>Firebase encrypts these transfers in transit. Firestore security rules restrict each account namespace to its authenticated Firebase user. This is account-scoped cloud storage, not end-to-end encryption; Google acts as a service provider for authentication and storage and may store this data on servers outside your country.</p>
+      <p>Signing out stops new cloud sync. Data already synced stays in your cloud account until you delete the account, and local encrypted data remains on the device.</p>
       <h2>Diagnostics, advertising, and tracking</h2>
-      <p>Nido does not use advertising, an advertising ID, analytics, or behavioral tracking, and it does not sell personal data. Crash reporting is off by default. If you explicitly enable <strong>Share crash reports</strong> in Settings, Nido sends technical crash and cloud-sync failure diagnostics to Firebase Crashlytics. Reports exclude baby names, care-log contents, notes, photos, email addresses, and account identifiers. You can disable crash reporting again at any time.</p>
-
+      <p>Nido does not use advertising, an advertising ID, analytics, or behavioral tracking, and it does not sell personal data. Crash reporting is off by default. If you explicitly enable <strong>Share crash reports</strong> in Settings, Nido sends technical crash and cloud-sync failure diagnostics to Firebase Crashlytics. Crashlytics may collect stack traces, relevant app and device details, and a random app-installation identifier. Nido attaches only a fixed diagnostic-area label; it does not attach your Firebase account ID, baby names, log contents, notes, photos, or email address as report fields. You can disable crash reporting again at any time.</p>
       <h2>Permissions</h2>
       <ul>
         <li><strong>Notifications:</strong> shows the live sleep timer and optional care reminders.</li>
+        <li><strong>Promoted notifications:</strong> lets Android show the running sleep timer as a live update on the lock screen and status bar.</li>
+        <li><strong>Internet and network state:</strong> used only for Google sign-in, cloud sync, and crash reports you have turned on.</li>
+        <li><strong>Biometrics:</strong> used for the optional app lock. Android checks your fingerprint, face, or PIN; Nido only learns whether the check succeeded and never receives biometric data.</li>
+        <li><strong>Foreground service and wake lock:</strong> requested by Android’s background-work library so sync and reminder work can finish reliably.</li>
         <li><strong>Receive boot completed:</strong> restores reminder and widget-refresh schedules after a restart.</li>
-        <li><strong>Exact alarms:</strong> refreshes time-based widget text near local midnight. If unavailable, Nido uses an inexact alarm.</li>
+        <li><strong>Scheduled widget refresh:</strong> uses an inexact alarm to refresh time-based widget text near local midnight. Nido does not request the exact-alarm permission.</li>
       </ul>
       <p>Photo selection and backup restore use Android’s system document pickers. Nido receives access only to items you select.</p>
-
+      <p>Notifications and home-screen widgets can show baby names and recent entries. Depending on your Android settings, notifications may appear on the lock screen.</p>
       <h2>Sharing and exports</h2>
       <p>When you choose backup, CSV export, feedback, or sharing, Nido hands the selected content to the Android system picker or share sheet. The destination you choose handles the file under its own terms and privacy policy.</p>
-
       <h2>Retention and deletion</h2>
-      <p>Local data remains until you delete it, clear Nido’s app storage, or uninstall the app. When signed in, choose <strong>Settings → Account → Delete cloud account</strong> to permanently delete the Firebase account and synced Firestore data. Local encrypted data remains available on that device until you clear app storage or uninstall Nido.</p>
+      <p>Local data remains until you delete it, clear Nido’s app storage, or uninstall the App.</p>
+      <p>Deleting an entry removes it from the App on all your devices. To keep devices consistent, Nido records each change as history, so an entry’s earlier contents remain in the encrypted database, in JSON backups, and, if you sync, in your cloud account until you delete that account.</p>
+      <p>When signed in, choose <strong>Settings → Account → Delete cloud account</strong> to permanently delete the Firebase account and all synced Firestore data, including that history. Local encrypted data remains available on that device until you clear app storage or uninstall Nido.</p>
       <p>You may also request account and cloud-data deletion by emailing <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a> from the Google account associated with Nido. Requests are handled after account ownership is verified. See the <a href="../delete-account/">account-deletion instructions</a>.</p>
-
+      <h2>Your choices</h2>
+      <ul>
+        <li><strong>See and take your data:</strong> export a JSON backup or CSV from Settings at any time.</li>
+        <li><strong>Correct or remove entries:</strong> edit or delete any entry in the App.</li>
+        <li><strong>Stop syncing:</strong> sign out in Settings.</li>
+        <li><strong>Delete cloud data:</strong> use <strong>Delete cloud account</strong> or email the contact below.</li>
+        <li><strong>Crash reports and app lock:</strong> turn either on or off in Settings.</li>
+      </ul>
+      <h2>Security</h2>
+      <p>Nido encrypts care data on the device and in transit, and restricts cloud data to your account. No method of storage or transmission is completely secure, so Nido cannot guarantee absolute security.</p>
       <h2>Children’s privacy</h2>
-      <p>Nido is intended for adult caregivers. It is not directed to children. Information about a child is entered and controlled by the caregiver using the app.</p>
-
+      <p>Nido is intended for adult caregivers. It is not directed to children. Information about a child is entered and controlled by the caregiver using the App.</p>
       <h2>Changes</h2>
       <p>If this policy materially changes, the effective date above will be updated.</p>
-
       <h2>Contact</h2>
       <p>Questions or deletion requests: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
     </article>
