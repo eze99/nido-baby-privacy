@@ -15,7 +15,7 @@
     </nav>
     <article>
       <h1>Privacy Policy</h1>
-      <p class="meta"><strong>Effective September 24, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
+      <p class="meta"><strong>Effective September 25, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
 
       <p>This Privacy Policy explains how Nido Baby ("Nido" or the "App") handles information.</p>
       <h2>Local-first storage</h2>
@@ -29,14 +29,16 @@
         <li>Baby profiles: names, birth dates, diaper or potty tracking mode, display order, and profile photos (a compressed cropped photo and the compressed original you chose)</li>
         <li>Caregiver-entered care and health logs, including feeding, diaper, sleep, pumping, growth, temperature, medication, activity, timestamps, quantities, and notes</li>
         <li>Technical sync identifiers and timestamps needed to reconcile devices</li>
+        <li>A push token for each device you sign in on (from Firebase Cloud Messaging), so an entry saved on one device can wake your other devices to sync and, if you allow it, show a notification</li>
       </ul>
+      <p>When an entry reaches your cloud account, a Nido server function run on Google Firebase looks up your other signed-in devices and sends each a push message. The message carries only record identifiers, never entry contents; each device then downloads the entry itself over its own signed-in connection. The function does not store or log entry contents.</p>
       <p>Firebase encrypts these transfers in transit. Firestore security rules restrict each account namespace to its authenticated Firebase user. This is account-scoped cloud storage, not end-to-end encryption; Google acts as a service provider for authentication and storage and may store this data on servers outside your country.</p>
-      <p>Signing out stops new cloud sync. Data already synced stays in your cloud account until you delete the account, and local encrypted data remains on the device.</p>
+      <p>Signing out stops new cloud sync and removes that device’s push token from your account. Data already synced stays in your cloud account until you delete the account, and local encrypted data remains on the device.</p>
       <h2>Diagnostics, advertising, and tracking</h2>
       <p>Nido does not use advertising, an advertising ID, analytics, or behavioral tracking, and it does not sell personal data. Crash reporting is off by default. If you explicitly enable <strong>Share crash reports</strong> in Settings, Nido sends technical crash and cloud-sync failure diagnostics to Firebase Crashlytics. Crashlytics may collect stack traces, relevant app and device details, and a random app-installation identifier. Nido attaches only a fixed diagnostic-area label; it does not attach your Firebase account ID, baby names, log contents, notes, photos, or email address as report fields. You can disable crash reporting again at any time.</p>
       <h2>Permissions</h2>
       <ul>
-        <li><strong>Notifications:</strong> shows the live sleep timer and optional care reminders.</li>
+        <li><strong>Notifications:</strong> shows the live sleep timer, optional care reminders, and, when you sync more than one device, entries logged or changed on your other devices (you can turn those off in Settings).</li>
         <li><strong>Promoted notifications:</strong> lets Android show the running sleep timer as a live update on the lock screen and status bar.</li>
         <li><strong>Internet and network state:</strong> used only for Google sign-in, cloud sync, and crash reports you have turned on.</li>
         <li><strong>Biometrics:</strong> used for the optional app lock. Android checks your fingerprint, face, or PIN; Nido only learns whether the check succeeded and never receives biometric data.</li>
@@ -51,7 +53,7 @@
       <h2>Retention and deletion</h2>
       <p>Local data remains until you delete it, clear Nido’s app storage, or uninstall the App.</p>
       <p>Deleting an entry removes it from the App on all your devices. To keep devices consistent, Nido records each change as history, so an entry’s earlier versions remain in the encrypted database on your device and, if you sync, in your cloud account until you delete that account. JSON backups hold the latest version of each entry, including the last contents of entries you deleted.</p>
-      <p>When signed in, choose <strong>Settings → Account → Delete cloud account</strong> to permanently delete the Firebase account and all synced Firestore data, including that history. Nido keeps only a record that the account was closed: the deleted account’s random ID and the time deletion started, so no device can add data to it afterwards. Local encrypted data remains available on that device until you clear app storage or uninstall Nido.</p>
+      <p>When signed in, choose <strong>Settings → Account → Delete cloud account</strong> to permanently delete the Firebase account and all synced Firestore data, including that history and your devices’ push tokens. A push token is also removed when you sign out on that device, and when Firebase reports it is no longer valid (for example, after Nido is uninstalled). Nido keeps only a record that the account was closed: the deleted account’s random ID and the time deletion started, so no device can add data to it afterwards. Local encrypted data remains available on that device until you clear app storage or uninstall Nido.</p>
       <p>You may also request account and cloud-data deletion by emailing <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a> from the Google account associated with Nido. Requests are handled after account ownership is verified. See the <a href="../delete-account/">account-deletion instructions</a>.</p>
       <h2>Your choices</h2>
       <ul>
@@ -59,6 +61,7 @@
         <li><strong>Correct or remove entries:</strong> edit or delete any entry in the App.</li>
         <li><strong>Stop syncing:</strong> sign out in Settings.</li>
         <li><strong>Delete cloud data:</strong> use <strong>Delete cloud account</strong> or email the contact below.</li>
+        <li><strong>Notifications from other devices:</strong> turn off in Settings &gt; Notifications &amp; privacy.</li>
         <li><strong>Crash reports and app lock:</strong> turn either on or off in Settings.</li>
       </ul>
       <h2>Security</h2>
