@@ -15,7 +15,7 @@
     </nav>
     <article>
       <h1>Privacy Policy</h1>
-      <p class="meta"><strong>Effective September 25, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
+      <p class="meta"><strong>Effective September 26, 2026</strong> · Developer contact: <a href="mailto:eze.os93@gmail.com">eze.os93@gmail.com</a></p>
 
       <p>This Privacy Policy explains how Nido Baby ("Nido" or the "App") handles information.</p>
       <h2>Local-first storage</h2>
@@ -29,7 +29,7 @@
         <li>Baby profiles: names, birth dates, diaper or potty tracking mode, display order, and profile photos (a compressed cropped photo and the compressed original you chose)</li>
         <li>Caregiver-entered care and health logs, including feeding, diaper, sleep, pumping, growth, temperature, medication, activity, timestamps, quantities, and notes</li>
         <li>Technical sync identifiers and timestamps needed to reconcile devices</li>
-        <li>A push token for each device you sign in on (from Firebase Cloud Messaging), so an entry saved on one device can wake your other devices to sync and, if you allow it, show a notification</li>
+        <li>A push token for each device you sign in on (from Firebase Cloud Messaging), and whether that device shows notifications for your other devices’ entries, so an entry saved on one device can wake your other devices to sync and, if you allow it, show a notification</li>
       </ul>
       <p>When an entry reaches your cloud account, a Nido server function run on Google Firebase looks up your other signed-in devices and sends each a push message. The message carries only record identifiers, never entry contents; each device then downloads the entry itself over its own signed-in connection. The function does not store or log entry contents.</p>
       <p>Firebase encrypts these transfers in transit. Firestore security rules restrict each account namespace to its authenticated Firebase user. This is account-scoped cloud storage, not end-to-end encryption; Google acts as a service provider for authentication and storage and may store this data on servers outside your country.</p>
